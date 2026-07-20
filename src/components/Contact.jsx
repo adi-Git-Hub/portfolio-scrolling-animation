@@ -33,7 +33,15 @@ const Contact = () => {
           className="bg-[#ff2a2a] w-full md:w-[85%] lg:w-[75%] p-8 md:p-16 text-white flex flex-col justify-between"
         >
           <div className="text-xs font-bold tracking-[0.2em] mb-12 md:mb-20 uppercase opacity-90">
-            Reach Us
+            Get In Touch
+          </div>
+
+          {/* Contact Info Links */}
+          <div className="flex flex-wrap gap-6 mb-12 text-sm font-medium">
+            <a href="mailto:aditya.dev.pande@gmail.com" className="text-white/90 hover:text-white underline underline-offset-4 decoration-1 transition-colors">aditya.dev.pande@gmail.com</a>
+            <a href="tel:+917498463025" className="text-white/90 hover:text-white underline underline-offset-4 decoration-1 transition-colors">+91 7498463025</a>
+            <a href="https://github.com/adityapande" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white underline underline-offset-4 decoration-1 transition-colors">GitHub</a>
+            <a href="https://linkedin.com/in/adityapande" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white underline underline-offset-4 decoration-1 transition-colors">LinkedIn</a>
           </div>
 
           <form className="flex flex-col gap-12 md:gap-16 w-full">

@@ -39,7 +39,7 @@ const Hero = () => {
         loop
         muted={isMuted}
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        className="absolute top-0 left-0 w-full h-full object-contain z-0"
       >
         <source src={heroVideo} type="video/mp4" />
         Your browser does not support the video tag.
@@ -55,7 +55,7 @@ const Hero = () => {
             data-aos="fade-up"
             className="text-white text-3xl md:text-5xl font-bold mb-4 tracking-tight"
           >
-            Hi, I’m a <br /> <span className="text-transparent [-webkit-text-stroke:1.5px_black]">Full Stack Developer</span>
+            Hi, I'm <br /> <span className="text-transparent [-webkit-text-stroke:1.5px_black]">Aditya Pande</span>
           </h1>
 
           {/* Subheading */}
@@ -64,7 +64,7 @@ const Hero = () => {
             data-aos-delay="200"
             className="text-white text-sm md:text-lg font-semibold mb-8 max-w-md drop-shadow-md"
           >
-            I build fast, scalable and modern web applications using React, Node.js and Tailwind CSS.
+            Backend &amp; DevOps Engineer — I build scalable APIs, automate cloud infrastructure, and ship production-grade systems on AWS with Docker and Kubernetes.
           </p>
 
           {/* Buttons */}
