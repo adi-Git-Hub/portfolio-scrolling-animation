@@ -44,8 +44,8 @@ const Footer = () => {
         </div>
         
         <div className="flex flex-col gap-2 md:items-end">
-          <a href="https://github.com/adityapande" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors underline-offset-4 decoration-1">GitHub</a>
-          <a href="https://linkedin.com/in/adityapande" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors underline-offset-4 decoration-1">LinkedIn</a>
+          <a href="https://github.com/adi-Git-Hub/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors underline-offset-4 decoration-1">GitHub</a>
+          <a href="https://www.linkedin.com/in/aditya-dev-pande/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors underline-offset-4 decoration-1">LinkedIn</a>
         </div>
       </div>
     </footer>

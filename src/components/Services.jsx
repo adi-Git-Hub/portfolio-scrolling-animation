@@ -263,7 +263,7 @@ const Services = () => {
                 <span key={tag} className="text-[10px] font-bold px-3 py-1 rounded-full bg-gray-200 text-gray-600 tracking-wide uppercase">{tag}</span>
               ))}
             </div>
-            <a href="https://github.com/adityapande" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#ff2a2a] hover:underline underline-offset-4">GitHub →</a>
+            <a href="https://github.com/adi-Git-Hub/" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#ff2a2a] hover:underline underline-offset-4">GitHub →</a>
           </div>
 
           {/* Project 3 */}
@@ -276,7 +276,7 @@ const Services = () => {
                 <span key={tag} className="text-[10px] font-bold px-3 py-1 rounded-full bg-gray-200 text-gray-600 tracking-wide uppercase">{tag}</span>
               ))}
             </div>
-            <a href="https://github.com/adityapande" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#ff2a2a] hover:underline underline-offset-4">GitHub →</a>
+            <a href="https://github.com/adi-Git-Hub/" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#ff2a2a] hover:underline underline-offset-4">GitHub →</a>
           </div>
         </div>
       </div>
@@ -333,11 +333,11 @@ const Services = () => {
             </div>
             <div className="flex flex-col gap-4">
               {[
-                { name: 'AWS Cloud Practitioner Essentials', url: '#' },
-                { name: 'AWS Certified DevOps Engineer – Professional (Exam Prep)', url: '#' },
-                { name: 'AWS Certified DevOps Engineer – Professional (Domain 1)', url: '#' },
-                { name: 'AWS Certified DevOps Engineer – Professional (Domain 2)', url: '#' },
-                { name: 'AWS Certified DevOps Engineer – Professional (Domain 3)', url: '#' },
+                { name: 'AWS Cloud Practitioner Essentials', url: 'https://adi-git-hub.github.io/aditya-certificate/certificates/pages/aws-cloud-practitioner-essentials.html' },
+                { name: 'AWS Certified DevOps Engineer – Professional (Exam Prep)', url: 'https://adi-git-hub.github.io/aditya-certificate/certificates/pages/aws-certified-devops-engineer-exam-prep.html' },
+                { name: 'AWS Certified DevOps Engineer – Professional (Domain 1)', url: 'https://adi-git-hub.github.io/aditya-certificate/certificates/pages/aws-certified-devops-engineer-domain-1-review.html' },
+                { name: 'AWS Certified DevOps Engineer – Professional (Domain 2)', url: 'https://adi-git-hub.github.io/aditya-certificate/certificates/pages/aws-certified-devops-engineer-domain-2-review.html' },
+                { name: 'AWS Certified DevOps Engineer – Professional (Domain 3)', url: 'https://adi-git-hub.github.io/aditya-certificate/certificates/pages/aws-certified-devops-engineer-domain-3-review.html' },
               ].map((cert, i) => (
                 <a 
                   key={i}
