@@ -1,37 +1,23 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useMotionValueEvent } from 'framer-motion';
 
-const TagCard = ({ number, title, text, className, aosDelay, aosType, pathLength, containerRef }) => {
-  const ref = useRef(null);
+const TagCard = ({ number, title, text, className, aosDelay, aosType, pathLength, targetProgress = 0.5 }) => {
   const [isActive, setIsActive] = useState(false);
 
+  // Synchronized with dashed line progress with zero layout reflows
   useMotionValueEvent(pathLength, "change", (latest) => {
-    if (!ref.current || !containerRef.current) return;
-    
-    const cardRect = ref.current.getBoundingClientRect();
-    const containerRect = containerRef.current.getBoundingClientRect();
-    
-    const cardTopRelativeToContainer = cardRect.top - containerRect.top;
-    const containerHeight = containerRect.height;
-    
-    // Trigger when the line tip is 50px into the card
-    const triggerY = cardTopRelativeToContainer + 50;
-    const lineTipY = latest * containerHeight;
-    
-    if (lineTipY >= triggerY && !isActive) {
-      setIsActive(true);
-    } else if (lineTipY < triggerY && isActive) {
-      setIsActive(false);
+    const shouldActive = latest >= targetProgress;
+    if (shouldActive !== isActive) {
+      setIsActive(shouldActive);
     }
   });
 
   return (
     <div 
-      ref={ref}
       data-aos={aosType || "fade-up"} 
       data-aos-delay={aosDelay}
-      className={`w-72 sm:w-80 rounded-[2rem] p-2 relative flex flex-col items-center hover:scale-[1.02] transition-all duration-700 z-10 ${className} ${
-        isActive ? 'bg-[#eb5e55] border-rose-300 shadow-[0_20px_50px_rgba(235,94,85,0.4)]' : 'bg-white border border-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]'
+      className={`w-72 sm:w-80 rounded-[2rem] p-2 relative flex flex-col items-center hover:scale-[1.02] transition-[transform,box-shadow,border-color] duration-250 ease-out z-10 hardware-accelerated ${className} ${
+        isActive ? 'bg-[#eb5e55] border-rose-300 shadow-[0_20px_50px_rgba(235,94,85,0.35)]' : 'bg-white border border-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]'
       }`}
     >
       {/* The hole punch */}
@@ -40,18 +26,18 @@ const TagCard = ({ number, title, text, className, aosDelay, aosType, pathLength
       </div>
       
       {/* Inner container */}
-      <div className={`w-full h-full rounded-[1.5rem] mt-8 p-8 flex flex-col min-h-[220px] transition-colors duration-700 ${
+      <div className={`w-full h-full rounded-[1.5rem] mt-8 p-8 flex flex-col min-h-[220px] transition-[background-color,color] duration-300 ease-out ${
         isActive ? 'bg-[#c83d36]' : 'bg-[#f4f4f4]'
       }`}>
-        <span className={`text-xl font-bold mb-2 font-serif italic transition-colors duration-700 ${
+        <span className={`text-xl font-bold mb-2 font-serif italic transition-colors duration-300 ${
           isActive ? 'text-rose-100' : 'text-gray-400'
         }`}>{number}</span>
         
-        <h3 className={`text-2xl font-black mb-3 tracking-tight transition-colors duration-700 ${
+        <h3 className={`text-2xl font-black mb-3 tracking-tight transition-colors duration-300 ${
           isActive ? 'text-white' : 'text-gray-900'
         }`}>{title}</h3>
         
-        <p className={`text-sm leading-relaxed font-medium transition-colors duration-700 ${
+        <p className={`text-sm leading-relaxed font-medium transition-colors duration-300 ${
           isActive ? 'text-rose-50' : 'text-gray-500'
         }`}>
           {text}
@@ -181,7 +167,7 @@ const Services = () => {
             aosType="fade-left"
             aosDelay="100"
             pathLength={pathLength}
-            containerRef={containerRef}
+            targetProgress={0.18}
           />
 
           <TagCard 
@@ -192,7 +178,7 @@ const Services = () => {
             aosType="fade-right"
             aosDelay="200"
             pathLength={pathLength}
-            containerRef={containerRef}
+            targetProgress={0.42}
           />
 
           <TagCard 
@@ -203,7 +189,7 @@ const Services = () => {
             aosType="fade-left"
             aosDelay="300"
             pathLength={pathLength}
-            containerRef={containerRef}
+            targetProgress={0.65}
           />
 
           <TagCard 
@@ -214,7 +200,7 @@ const Services = () => {
             aosType="fade-right"
             aosDelay="400"
             pathLength={pathLength}
-            containerRef={containerRef}
+            targetProgress={0.88}
           />
 
           {/* Hand-drawn end text */}
@@ -244,7 +230,7 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Project 1 */}
-          <div data-aos="fade-up" data-aos-delay="100" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 hover:shadow-[0_20px_50px_rgba(235,94,85,0.15)] transition-all duration-500 group border border-gray-200 flex flex-col justify-between">
+          <div data-aos="fade-up" data-aos-delay="100" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 hover:shadow-[0_20px_50px_rgba(235,94,85,0.15)] transition-[transform,box-shadow] duration-250 ease-out hover:-translate-y-1 group border border-gray-200 flex flex-col justify-between">
             <div>
               <span className="text-xs font-bold tracking-[0.2em] text-[#eb5e55] uppercase mb-4 block">01</span>
               <h3 className="text-xl font-black text-gray-900 mb-3 tracking-tight">Employee Performance Analysis</h3>
@@ -265,7 +251,7 @@ const Services = () => {
           </div>
 
           {/* Project 2 */}
-          <div data-aos="fade-up" data-aos-delay="200" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 hover:shadow-[0_20px_50px_rgba(235,94,85,0.15)] transition-all duration-500 group border border-gray-200 flex flex-col justify-between">
+          <div data-aos="fade-up" data-aos-delay="200" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 hover:shadow-[0_20px_50px_rgba(235,94,85,0.15)] transition-[transform,box-shadow] duration-250 ease-out hover:-translate-y-1 group border border-gray-200 flex flex-col justify-between">
             <div>
               <span className="text-xs font-bold tracking-[0.2em] text-[#eb5e55] uppercase mb-4 block">02</span>
               <h3 className="text-xl font-black text-gray-900 mb-3 tracking-tight">Disease Outbreak Prediction</h3>
@@ -286,7 +272,7 @@ const Services = () => {
           </div>
 
           {/* Project 3 */}
-          <div data-aos="fade-up" data-aos-delay="300" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 hover:shadow-[0_20px_50px_rgba(235,94,85,0.15)] transition-all duration-500 group border border-gray-200 flex flex-col justify-between">
+          <div data-aos="fade-up" data-aos-delay="300" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 hover:shadow-[0_20px_50px_rgba(235,94,85,0.15)] transition-[transform,box-shadow] duration-250 ease-out hover:-translate-y-1 group border border-gray-200 flex flex-col justify-between">
             <div>
               <span className="text-xs font-bold tracking-[0.2em] text-[#eb5e55] uppercase mb-4 block">03</span>
               <h3 className="text-xl font-black text-gray-900 mb-3 tracking-tight">SoulEase Mental Health Care App</h3>

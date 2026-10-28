@@ -38,7 +38,9 @@ export default function Lanyard({
   lanyardWidth = 1,
   shouldFall = false
 }) {
+  const containerRef = useRef(null);
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -46,12 +48,26 @@ export default function Lanyard({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Performance: Pause Canvas rendering loop when scrolled off-screen
+  useEffect(() => {
+    if (!containerRef.current || typeof IntersectionObserver === 'undefined') return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { rootMargin: '300px 0px' }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="relative z-0 w-full h-full flex justify-center items-center transform scale-100 origin-center">
+    <div ref={containerRef} className="relative z-0 w-full h-full flex justify-center items-center transform scale-100 origin-center hardware-accelerated">
       <Canvas
+        frameloop={isVisible ? 'always' : 'never'}
         camera={{ position: position, fov: fov }}
         dpr={[1, isMobile ? 1.5 : 2]}
-        gl={{ alpha: transparent }}
+        gl={{ alpha: transparent, powerPreference: 'high-performance' }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
         <ambientLight intensity={Math.PI} />

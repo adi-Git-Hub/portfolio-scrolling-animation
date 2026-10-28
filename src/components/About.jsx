@@ -1,7 +1,11 @@
 import React, { useRef, useState, useEffect, useMemo } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import hrutujaIcard from '../assets/about/hrutuja_icard.png';
 import Lanyard from './Lanyard/Lanyard';
 import OrbitImages from './OrbitImages/OrbitImages';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // 3D orbit icons for Data Analysis & ML Stack
 import pythonIcon from '../assets/orbit-icons/python.png';
@@ -36,15 +40,20 @@ const About = () => {
   const [orbitWidth, setOrbitWidth] = useState(0);
   const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'orbit'
 
-  /* ── Scroll-based card fall at 80% ── */
+  /* ── Scroll-based card fall at 80% — uses ScrollTrigger for zero-reflow efficiency ── */
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current || shouldFall) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      if (-rect.top / rect.height >= 0.8) setShouldFall(true);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (!sectionRef.current || shouldFall) return;
+    const trigger = ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: 'top top',
+      end: 'bottom top',
+      onUpdate: (self) => {
+        if (self.progress >= 0.8 && !shouldFall) {
+          setShouldFall(true);
+        }
+      },
+    });
+    return () => trigger.kill();
   }, [shouldFall]);
 
   /* ── Track orbit container width for responsive custom path ── */
@@ -97,7 +106,7 @@ const About = () => {
               38% width, large, dominant
           ═══════════════════════════════════ */}
           <div className="flex flex-col items-center w-full md:w-[38%] shrink-0">
-            <div className="relative flex justify-center w-full h-[620px] md:h-[700px] animate-float">
+            <div className="relative flex justify-center w-full h-[620px] md:h-[700px]">
               {/* Soft shadow beneath the card */}
               <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-[40%] h-8 bg-black/15 rounded-full blur-2xl pointer-events-none" />
               <Lanyard
@@ -197,9 +206,9 @@ const About = () => {
                   {techStack.map((tech) => (
                     <div
                       key={tech.name}
-                      className="group relative flex flex-col items-center justify-center p-3 sm:p-3.5 rounded-2xl bg-white/[0.08] hover:bg-white/[0.18] border border-white/15 hover:border-white/40 backdrop-blur-md shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-default"
+                      className="group relative flex flex-col items-center justify-center p-3 sm:p-3.5 rounded-2xl bg-white/[0.08] hover:bg-white/[0.18] border border-white/15 hover:border-white/40 backdrop-blur-md shadow-md hover:shadow-xl transition-[transform,background-color,border-color,box-shadow] duration-200 ease-out hover:-translate-y-1 cursor-default"
                     >
-                      <div className="w-12 h-12 flex items-center justify-center mb-2 transform group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-12 h-12 flex items-center justify-center mb-2 transform group-hover:scale-105 transition-transform duration-200 ease-out">
                         <img
                           src={tech.icon}
                           alt={tech.name}

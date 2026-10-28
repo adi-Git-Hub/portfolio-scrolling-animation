@@ -85,10 +85,10 @@ const Contact = () => {
 
   return (
     <section ref={ref} id="contact" className="bg-[#121214] w-full min-h-screen relative overflow-hidden flex items-end pt-32 pb-0 md:pb-0 border-t border-gray-800">
-      {/* Huge Background Text */}
+      {/* Huge Background Text — Composited on GPU layer for zero raster lag */}
       <motion.div 
         style={{ y }}
-        className="absolute top-0 left-0 w-full h-full flex flex-col justify-start items-center overflow-hidden pointer-events-none z-0 pt-16 md:pt-12"
+        className="absolute top-0 left-0 w-full h-full flex flex-col justify-start items-center overflow-hidden pointer-events-none z-0 pt-16 md:pt-12 will-change-transform hardware-accelerated"
       >
         <h1 
           className="text-[25vw] leading-[0.75] font-black text-white/90 uppercase tracking-tighter select-none scale-y-[1.6] origin-top"
@@ -102,7 +102,7 @@ const Contact = () => {
       <div className="relative z-10 w-full flex justify-end items-end">
         <div 
           data-aos="fade-up"
-          className="bg-[#eb5e55] w-full md:w-[85%] lg:w-[75%] p-8 md:p-16 text-white flex flex-col justify-between shadow-2xl"
+          className="bg-[#eb5e55] w-full md:w-[85%] lg:w-[75%] p-8 md:p-16 text-white flex flex-col justify-between shadow-2xl hardware-accelerated"
         >
           <div className="text-xs font-bold tracking-[0.2em] mb-8 md:mb-14 uppercase opacity-95 text-[#fce7d2]">
             Let's Connect &bull; Open to Analytics &amp; ML Opportunities
@@ -260,7 +260,7 @@ const Contact = () => {
                   <button 
                     type="submit" 
                     disabled={status === 'loading'}
-                    className={`px-8 py-3 rounded-full border border-white/50 text-white font-bold flex items-center justify-center gap-3 transition-all duration-300 group whitespace-nowrap self-start sm:self-auto cursor-pointer ${
+                    className={`px-8 py-3 rounded-full border border-white/50 text-white font-bold flex items-center justify-center gap-3 transition-[background-color,color,transform,box-shadow] duration-200 ease-out active:scale-95 group whitespace-nowrap self-start sm:self-auto cursor-pointer ${
                       status === 'loading' 
                         ? 'opacity-70 cursor-not-allowed' 
                         : 'hover:bg-white hover:text-gray-900 shadow-md hover:shadow-xl'
