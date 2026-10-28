@@ -224,7 +224,23 @@ function Band({
       [card, j1, j2, j3, fixed].forEach(ref => ref.current?.wakeUp());
       card.current?.setNextKinematicTranslation({ x: vec.x - dragged.x, y: vec.y - dragged.y, z: vec.z - dragged.z });
     }
-    if (fixed.current) {
+    if (fixed.current && j1.current && j2.current && j3.current && card.current) {
+      const fixedPos = fixed.current.translation();
+      const cardPos = card.current.translation();
+      const j1Pos = j1.current.translation();
+      const j2Pos = j2.current.translation();
+      const j3Pos = j3.current.translation();
+
+      // Guard against non-finite or extreme out-of-bound values (e.g. after card falls into void)
+      if (
+        !Number.isFinite(fixedPos?.x) || !Number.isFinite(fixedPos?.y) || !Number.isFinite(fixedPos?.z) ||
+        !Number.isFinite(cardPos?.x) || !Number.isFinite(cardPos?.y) || !Number.isFinite(cardPos?.z) ||
+        !Number.isFinite(j1Pos?.x) || !Number.isFinite(j2Pos?.x) || !Number.isFinite(j3Pos?.x) ||
+        Math.abs(fixedPos.y) > 80 || Math.abs(cardPos.y) > 80
+      ) {
+        return;
+      }
+
       [j1, j2].forEach(ref => {
         if (!ref.current.lerped) ref.current.lerped = new THREE.Vector3().copy(ref.current.translation());
         const clampedDistance = Math.max(0.1, Math.min(1, ref.current.lerped.distanceTo(ref.current.translation())));
@@ -233,14 +249,18 @@ function Band({
           delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
         );
       });
-      curve.points[0].copy(j3.current.translation());
+      curve.points[0].copy(j3Pos);
       curve.points[1].copy(j2.current.lerped);
       curve.points[2].copy(j1.current.lerped);
-      curve.points[3].copy(fixed.current.translation());
-      band.current.geometry.setPoints(curve.getPoints(isMobile ? 16 : 32));
+      curve.points[3].copy(fixedPos);
+      if (band.current?.geometry?.setPoints) {
+        band.current.geometry.setPoints(curve.getPoints(isMobile ? 16 : 32));
+      }
       ang.copy(card.current.angvel());
       rot.copy(card.current.rotation());
-      card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
+      if (Number.isFinite(ang.x) && Number.isFinite(rot.y)) {
+        card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
+      }
     }
   });
 

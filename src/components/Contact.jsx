@@ -21,6 +21,8 @@ const Contact = () => {
   });
   const [status, setStatus] = useState('idle'); // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState('');
+  const [previewUrl, setPreviewUrl] = useState(null);
+  const [sentMode, setSentMode] = useState(null);
 
   const handleChange = (e) => {
     const { id, value, type, checked } = e.target;
@@ -47,48 +49,50 @@ const Contact = () => {
 
     setStatus('loading');
     setErrorMsg('');
+    setPreviewUrl(null);
+
+    const fullName = `${formData.firstName} ${formData.lastName}`.trim();
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/aditya.dev.pande@gmail.com', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
         },
         body: JSON.stringify({
-          name: `${formData.firstName} ${formData.lastName}`.trim(),
-          email: formData.email,
-          message: formData.message,
-          _subject: `Portfolio Contact — ${formData.firstName} ${formData.lastName}`.trim(),
-          _template: 'table',
+          name: fullName,
+          email: formData.email.trim(),
+          message: formData.message.trim(),
         }),
       });
 
       const data = await response.json();
 
-      if (data.success === 'true' || data.success === true || response.ok) {
+      if (response.ok && data.success) {
         setStatus('success');
+        setSentMode(data.mode || 'live');
+        setPreviewUrl(data.previewUrl || null);
         setFormData({ firstName: '', lastName: '', email: '', message: '', permission: false });
       } else {
         setStatus('error');
-        setErrorMsg(data.message || 'Something went wrong. Please try again.');
+        setErrorMsg(data.error || 'Something went wrong with Nodemailer. Please try again.');
       }
     } catch (err) {
       setStatus('error');
-      setErrorMsg('Network error. Please check your connection and try again.');
+      setErrorMsg('Connection error. Could not reach the email server. Please check your connection or send directly via email below.');
     }
   };
 
   return (
-    <section ref={ref} id="contact" className="bg-[#0a0a0a] w-full min-h-screen relative overflow-hidden flex items-end pt-32 pb-0 md:pb-0 border-t border-gray-900">
+    <section ref={ref} id="contact" className="bg-[#121214] w-full min-h-screen relative overflow-hidden flex items-end pt-32 pb-0 md:pb-0 border-t border-gray-800">
       {/* Huge Background Text */}
       <motion.div 
         style={{ y }}
         className="absolute top-0 left-0 w-full h-full flex flex-col justify-start items-center overflow-hidden pointer-events-none z-0 pt-16 md:pt-12"
       >
         <h1 
-          className="text-[25vw] leading-[0.75] font-black text-white uppercase tracking-tighter select-none scale-y-[1.6] origin-top"
-          style={{ fontFamily: "'Impact', 'Arial Black', sans-serif" }}
+          className="text-[25vw] leading-[0.75] font-black text-white/90 uppercase tracking-tighter select-none scale-y-[1.6] origin-top"
+          style={{ fontFamily: "'Impact', 'Barlow Condensed', 'Arial Black', sans-serif" }}
         >
           Contact
         </h1>
@@ -98,40 +102,78 @@ const Contact = () => {
       <div className="relative z-10 w-full flex justify-end items-end">
         <div 
           data-aos="fade-up"
-          className="bg-[#ff2a2a] w-full md:w-[85%] lg:w-[75%] p-8 md:p-16 text-white flex flex-col justify-between"
+          className="bg-[#eb5e55] w-full md:w-[85%] lg:w-[75%] p-8 md:p-16 text-white flex flex-col justify-between shadow-2xl"
         >
-          <div className="text-xs font-bold tracking-[0.2em] mb-12 md:mb-20 uppercase opacity-90">
-            Get In Touch
+          <div className="text-xs font-bold tracking-[0.2em] mb-8 md:mb-14 uppercase opacity-95 text-[#fce7d2]">
+            Let's Connect &bull; Open to Analytics &amp; ML Opportunities
           </div>
 
           {/* Contact Info Links */}
-          <div className="flex flex-wrap gap-6 mb-12 text-sm font-medium">
-            <a href="mailto:aditya.dev.pande@gmail.com" className="text-white/90 hover:text-white underline underline-offset-4 decoration-1 transition-colors">aditya.dev.pande@gmail.com</a>
-            <a href="tel:+917498463025" className="text-white/90 hover:text-white underline underline-offset-4 decoration-1 transition-colors">+91 7498463025</a>
-            <a href="https://github.com/adi-Git-Hub/" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white underline underline-offset-4 decoration-1 transition-colors">GitHub</a>
-            <a href="https://www.linkedin.com/in/aditya-dev-pande/" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white underline underline-offset-4 decoration-1 transition-colors">LinkedIn</a>
+          <div className="flex flex-wrap gap-6 mb-12 text-sm font-semibold">
+            <a href="mailto:hrutujadhoble483@gmail.com" className="text-white/95 hover:text-white underline underline-offset-4 decoration-1 transition-colors flex items-center gap-1.5">
+              <span>✉</span> hrutujadhoble483@gmail.com
+            </a>
+            <a href="https://github.com/HrutujaDhoble" target="_blank" rel="noopener noreferrer" className="text-white/95 hover:text-white underline underline-offset-4 decoration-1 transition-colors flex items-center gap-1.5">
+              <span>↗</span> GitHub
+            </a>
+            <a href="https://linkedin.com/in/hrutuja-dhoble-4bb192258" target="_blank" rel="noopener noreferrer" className="text-white/95 hover:text-white underline underline-offset-4 decoration-1 transition-colors flex items-center gap-1.5">
+              <span>↗</span> LinkedIn
+            </a>
           </div>
 
           {/* Success Message */}
           {status === 'success' && (
-            <div className="mb-8 bg-white/20 backdrop-blur-sm rounded-xl px-6 py-5 flex items-center gap-4 animate-pulse-once">
-              <svg className="w-7 h-7 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-              </svg>
-              <div>
-                <p className="font-bold text-lg">Message sent successfully!</p>
-                <p className="text-sm text-white/90 mt-0.5">I'll get back to you soon. Thanks for reaching out!</p>
+            <div className="mb-8 bg-white/20 backdrop-blur-sm rounded-xl px-6 py-5 flex flex-col gap-3 animate-pulse-once border border-white/30">
+              <div className="flex items-center gap-4">
+                <svg className="w-7 h-7 flex-shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+                <div>
+                  <p className="font-bold text-lg">Message Sent Successfully via Nodemailer!</p>
+                  <p className="text-sm text-white/90 mt-0.5">
+                    {sentMode === 'live' 
+                      ? "Delivered directly to Hrutuja's Gmail inbox (hrutujadhoble483@gmail.com). I'll reply promptly!" 
+                      : "Handled by Nodemailer test environment. Your message was processed and queued."}
+                  </p>
+                </div>
               </div>
+
+              {previewUrl && (
+                <div className="mt-2 pt-3 border-t border-white/20 flex flex-wrap items-center justify-between gap-3 text-xs">
+                  <span className="text-white/80">
+                    🔍 Dev preview ready (Ethereal Email):
+                  </span>
+                  <a 
+                    href={previewUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-gray-900 font-semibold shadow hover:bg-[#fce7d2] transition-colors"
+                  >
+                    <span>View Sent Email Preview</span>
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              )}
             </div>
           )}
 
           {/* Error Message */}
           {status === 'error' && errorMsg && (
-            <div className="mb-8 bg-black/20 backdrop-blur-sm rounded-xl px-6 py-4 flex items-center gap-3">
-              <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <p className="text-sm font-medium">{errorMsg}</p>
+            <div className="mb-8 bg-black/30 backdrop-blur-sm rounded-xl px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border border-red-300/30">
+              <div className="flex items-center gap-3">
+                <svg className="w-5 h-5 flex-shrink-0 text-red-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p className="text-sm font-medium text-white">{errorMsg}</p>
+              </div>
+              <a 
+                href={`mailto:hrutujadhoble483@gmail.com?subject=Contact%20from%20Portfolio&body=${encodeURIComponent(formData.message || 'Hi Hrutuja,')}`}
+                className="text-xs font-bold underline underline-offset-2 hover:text-[#fce7d2] whitespace-nowrap"
+              >
+                Open in Email App &rarr;
+              </a>
             </div>
           )}
 
@@ -147,7 +189,7 @@ const Contact = () => {
                     value={formData.firstName}
                     onChange={handleChange}
                     required
-                    className="w-full bg-transparent border-b border-white/40 pb-3 text-lg focus:outline-none focus:border-white transition-colors placeholder-white font-medium rounded-none"
+                    className="w-full bg-transparent border-b border-white/40 pb-3 text-lg focus:outline-none focus:border-white transition-colors placeholder-white/80 font-medium rounded-none"
                   />
                 </div>
                 <div className="relative">
@@ -157,7 +199,7 @@ const Contact = () => {
                     placeholder="Last Name" 
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-white/40 pb-3 text-lg focus:outline-none focus:border-white transition-colors placeholder-white font-medium rounded-none"
+                    className="w-full bg-transparent border-b border-white/40 pb-3 text-lg focus:outline-none focus:border-white transition-colors placeholder-white/80 font-medium rounded-none"
                   />
                 </div>
                 <div className="relative">
@@ -168,7 +210,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-transparent border-b border-white/40 pb-3 text-lg focus:outline-none focus:border-white transition-colors placeholder-white font-medium rounded-none"
+                    className="w-full bg-transparent border-b border-white/40 pb-3 text-lg focus:outline-none focus:border-white transition-colors placeholder-white/80 font-medium rounded-none"
                   />
                 </div>
               </div>
@@ -182,7 +224,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full h-full min-h-[120px] bg-transparent border-b border-white/40 pb-3 text-lg focus:outline-none focus:border-white transition-colors placeholder-white font-medium resize-none rounded-none"
+                    className="w-full h-full min-h-[120px] bg-transparent border-b border-white/40 pb-3 text-lg focus:outline-none focus:border-white transition-colors placeholder-white/80 font-medium resize-none rounded-none"
                   ></textarea>
                 </div>
               </div>
@@ -206,22 +248,22 @@ const Contact = () => {
               </div>
 
               {/* Right text & button */}
-              <div className="flex-1 flex flex-col gap-8 text-xs text-white/70 font-medium">
+              <div className="flex-1 flex flex-col gap-8 text-xs text-white/80 font-medium">
                 <p className="leading-relaxed max-w-[400px]">
-                  This site is protected by reCAPTCHA and the Google <a href="#" className="underline hover:text-white transition-colors">Privacy Policy</a> and <a href="#" className="underline hover:text-white transition-colors">Terms of Service</a> apply.
+                  Thank you for visiting my portfolio. I will get back to you as soon as possible.
                 </p>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-6">
-                  <p className="max-w-[250px] leading-relaxed">
-                    For information on how to unsubscribe, please review our <a href="#" className="underline hover:text-white transition-colors">privacy policy</a>.
+                  <p className="max-w-[250px] leading-relaxed text-white/60">
+                    Open to full-time roles, internships, and data science collaborations.
                   </p>
                   
                   <button 
                     type="submit" 
                     disabled={status === 'loading'}
-                    className={`px-8 py-3 rounded-full border border-white/40 text-white font-bold flex items-center justify-center gap-3 transition-all duration-300 group whitespace-nowrap self-start sm:self-auto ${
+                    className={`px-8 py-3 rounded-full border border-white/50 text-white font-bold flex items-center justify-center gap-3 transition-all duration-300 group whitespace-nowrap self-start sm:self-auto cursor-pointer ${
                       status === 'loading' 
                         ? 'opacity-70 cursor-not-allowed' 
-                        : 'hover:bg-white hover:text-[#ff2a2a]'
+                        : 'hover:bg-white hover:text-gray-900 shadow-md hover:shadow-xl'
                     }`}
                   >
                     {status === 'loading' ? (
@@ -241,7 +283,7 @@ const Contact = () => {
                       </>
                     ) : (
                       <>
-                        Send
+                        Send Message
                         <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>

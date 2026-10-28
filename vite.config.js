@@ -4,7 +4,15 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/aditya-portfolio/',
+  base: './',
   plugins: [react(), tailwindcss()],
-  assetsInclude: ['**/*.glb']
+  assetsInclude: ['**/*.glb'],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5001',
+        changeOrigin: true,
+      },
+    },
+  },
 })

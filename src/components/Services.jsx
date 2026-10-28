@@ -31,7 +31,7 @@ const TagCard = ({ number, title, text, className, aosDelay, aosType, pathLength
       data-aos={aosType || "fade-up"} 
       data-aos-delay={aosDelay}
       className={`w-72 sm:w-80 rounded-[2rem] p-2 relative flex flex-col items-center hover:scale-[1.02] transition-all duration-700 z-10 ${className} ${
-        isActive ? 'bg-[#ff2a2a] border-red-400 shadow-[0_20px_50px_rgba(255,42,42,0.4)]' : 'bg-white border border-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]'
+        isActive ? 'bg-[#eb5e55] border-rose-300 shadow-[0_20px_50px_rgba(235,94,85,0.4)]' : 'bg-white border border-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]'
       }`}
     >
       {/* The hole punch */}
@@ -41,10 +41,10 @@ const TagCard = ({ number, title, text, className, aosDelay, aosType, pathLength
       
       {/* Inner container */}
       <div className={`w-full h-full rounded-[1.5rem] mt-8 p-8 flex flex-col min-h-[220px] transition-colors duration-700 ${
-        isActive ? 'bg-red-700/50' : 'bg-[#f4f4f4]'
+        isActive ? 'bg-[#c83d36]' : 'bg-[#f4f4f4]'
       }`}>
         <span className={`text-xl font-bold mb-2 font-serif italic transition-colors duration-700 ${
-          isActive ? 'text-red-200' : 'text-gray-400'
+          isActive ? 'text-rose-100' : 'text-gray-400'
         }`}>{number}</span>
         
         <h3 className={`text-2xl font-black mb-3 tracking-tight transition-colors duration-700 ${
@@ -52,7 +52,7 @@ const TagCard = ({ number, title, text, className, aosDelay, aosType, pathLength
         }`}>{title}</h3>
         
         <p className={`text-sm leading-relaxed font-medium transition-colors duration-700 ${
-          isActive ? 'text-red-100' : 'text-gray-500'
+          isActive ? 'text-rose-50' : 'text-gray-500'
         }`}>
           {text}
         </p>
@@ -85,7 +85,7 @@ const Services = () => {
             Experience &amp; Work
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-[1.1] mb-6 tracking-tight relative">
-            Building production systems from code to cloud
+            Transforming complex data into predictive insights
             {/* Hand-drawn arrow */}
             <svg className="absolute -bottom-10 right-10 w-12 h-12 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" className="hidden" />
@@ -93,7 +93,7 @@ const Services = () => {
             </svg>
           </h2>
           <p className="text-gray-500 text-base md:text-lg max-w-sm font-medium leading-relaxed">
-            From backend architecture and cloud deployments to CI/CD automation — here's how I've contributed across real production environments.
+            From exploratory data analysis and statistical modeling to interactive dashboards and machine learning systems.
           </p>
         </div>
 
@@ -127,8 +127,8 @@ const Services = () => {
           <path 
             d="M 650,200 C 400,300 200,400 300,600 C 400,800 750,750 700,950 C 650,1150 400,1150 300,1200" 
             fill="none" 
-            stroke="black" 
-            strokeWidth="2" 
+            stroke="#eb5e55" 
+            strokeWidth="2.5" 
             strokeDasharray="8 10" 
             mask="url(#path-mask)"
             className="drop-shadow-sm"
@@ -162,7 +162,7 @@ const Services = () => {
           <path 
             d="M 2,0 L 2,100" 
             fill="none" 
-            stroke="black" 
+            stroke="#eb5e55" 
             strokeWidth="4" 
             strokeDasharray="4 6" 
             mask="url(#path-mask-mobile)"
@@ -175,8 +175,8 @@ const Services = () => {
           
           <TagCard 
             number="01"
-            title="Backend & DevOps Intern"
-            text="SyncSaS Technologies (Remote) · Dec 2024 – Jun 2025. Developed scalable backend services and RESTful APIs using Node.js, Express.js, and MongoDB. Deployed and maintained cloud-based production environments with Docker, AWS, Linux, and Nginx. Implemented CI/CD workflows using GitHub Actions and Jenkins."
+            title="Data Analytics & Modeling"
+            text="Exploratory Data Analysis · Statistical Modeling. Cleaning, parsing, and transforming raw transactional and behavioral datasets. Engineering predictive features and evaluating core distributions using Python, Pandas, NumPy, and Scikit-Learn."
             className="md:absolute md:top-[10px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-6"
             aosType="fade-left"
             aosDelay="100"
@@ -186,8 +186,8 @@ const Services = () => {
 
           <TagCard 
             number="02"
-            title="Software Engineer"
-            text="Jan 2025 – Present. Independently designed, developed, deployed, and maintained an end-to-end production-grade web application. Worked directly with stakeholders on requirements, scoping, and delivery. Built production infrastructure using AWS, Docker, Linux, Nginx, SSL, DNS, and automated deployment workflows."
+            title="Employee Performance Analysis"
+            text="Workforce Analytics & Modeling. Designed end-to-end data pipelines and classification models to identify key productivity drivers and retention factors, producing actionable dashboards that highlight attrition risk."
             className="md:absolute md:top-[450px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-6"
             aosType="fade-right"
             aosDelay="200"
@@ -197,8 +197,8 @@ const Services = () => {
 
           <TagCard 
             number="03"
-            title="Soliva Guard"
-            text="Production E-Commerce Platform — React, Node.js, Express.js, MongoDB, Docker, AWS, Nginx, GitHub Actions. Built and deployed a production-grade platform with secure auth, payment integration, order management, and admin dashboard. Automated containerized deployments with CI/CD."
+            title="Disease Outbreak Prediction"
+            text="Predictive Healthcare Analytics. Constructed epidemiological forecasting models evaluating multi-variable clinical datasets. Achieved robust classification metrics to aid early disease outbreak detection and geographic risk mapping."
             className="md:absolute md:top-[700px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-3"
             aosType="fade-left"
             aosDelay="300"
@@ -208,8 +208,8 @@ const Services = () => {
 
           <TagCard 
             number="04"
-            title="K8s Multi-Tier Deploy"
-            text="Kubernetes, Docker, Helm, Jenkins, AWS, GitHub Actions. Deployed a production-style multi-tier microservices application on Kubernetes. Automated CI/CD pipelines for rolling updates with minimal downtime. Implemented service discovery, load balancing, and health checks following cloud-native practices."
+            title="SoulEase Mental Health App"
+            text="Sentiment Analytics & AI Assistance. Built personalized recommendation logic and sentiment analysis models, translating user mood check-ins and health records into supportive wellness insights."
             className="md:absolute md:top-[1050px] md:left-[15%] lg:left-[25%] -rotate-1 md:-rotate-3"
             aosType="fade-right"
             aosDelay="400"
@@ -221,9 +221,9 @@ const Services = () => {
           <div 
             data-aos="fade-in" 
             data-aos-delay="600"
-            className="hidden md:block absolute top-[1250px] left-[60%] font-['Caveat',cursive] text-3xl text-gray-600 rotate-6"
+            className="hidden md:block absolute top-[1250px] left-[60%] font-['Caveat',cursive] text-3xl text-[#eb5e55] font-bold rotate-6"
           >
-            Shipped to production!
+            Insights delivered to production!
           </div>
 
         </div>
@@ -234,49 +234,76 @@ const Services = () => {
       <div id="projects" className="max-w-6xl mx-auto mt-24 md:mt-32">
         <div data-aos="fade-up" className="mb-16">
           <div className="inline-block border border-gray-300 rounded-full px-5 py-1.5 text-sm text-gray-600 font-bold mb-8 shadow-sm bg-white">
-            Projects
+            Featured Projects
           </div>
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-4">What I've Built</h2>
+          <p className="text-gray-500 text-sm md:text-base font-medium max-w-xl">
+            Selected projects demonstrating data analytics, predictive machine learning, and human-centric software solutions.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Project 1 */}
-          <div data-aos="fade-up" data-aos-delay="100" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-500 group border border-gray-200">
-            <span className="text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 block">01</span>
-            <h3 className="text-xl font-black text-gray-900 mb-3 tracking-tight">Soliva Guard</h3>
-            <p className="text-sm text-gray-500 font-medium leading-relaxed mb-4">Production e-commerce platform with secure authentication, payment integration, order management, and admin dashboard. Automated containerized deployments with CI/CD.</p>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {['React', 'Node.js', 'Express.js', 'MongoDB', 'Docker', 'AWS', 'Nginx', 'GitHub Actions'].map(tag => (
-                <span key={tag} className="text-[10px] font-bold px-3 py-1 rounded-full bg-gray-200 text-gray-600 tracking-wide uppercase">{tag}</span>
-              ))}
+          <div data-aos="fade-up" data-aos-delay="100" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 hover:shadow-[0_20px_50px_rgba(235,94,85,0.15)] transition-all duration-500 group border border-gray-200 flex flex-col justify-between">
+            <div>
+              <span className="text-xs font-bold tracking-[0.2em] text-[#eb5e55] uppercase mb-4 block">01</span>
+              <h3 className="text-xl font-black text-gray-900 mb-3 tracking-tight">Employee Performance Analysis</h3>
+              <p className="text-sm text-gray-600 font-medium leading-relaxed mb-4">
+                Comprehensive data analytics and predictive evaluation exploring workforce productivity, tenure correlations, and workplace satisfaction to predict employee retention patterns.
+              </p>
             </div>
-            <a href="https://solivaguard.com" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#ff2a2a] hover:underline underline-offset-4">Live Demo →</a>
+            <div>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {['Python', 'Pandas', 'Scikit-Learn', 'Matplotlib', 'EDA', 'Data Visualization'].map(tag => (
+                  <span key={tag} className="text-[10px] font-bold px-3 py-1 rounded-full bg-gray-200 text-gray-700 tracking-wide uppercase">{tag}</span>
+                ))}
+              </div>
+              <a href="https://github.com/HrutujaDhoble" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#eb5e55] hover:underline underline-offset-4 flex items-center gap-1">
+                GitHub Repository →
+              </a>
+            </div>
           </div>
 
           {/* Project 2 */}
-          <div data-aos="fade-up" data-aos-delay="200" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-500 group border border-gray-200">
-            <span className="text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 block">02</span>
-            <h3 className="text-xl font-black text-gray-900 mb-3 tracking-tight">Multi-Tier K8s Deployment</h3>
-            <p className="text-sm text-gray-500 font-medium leading-relaxed mb-4">Production-style multi-tier microservices on Kubernetes. Automated CI/CD pipelines for rolling updates with minimal downtime. Service discovery, load balancing, and health checks.</p>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {['Kubernetes', 'Docker', 'Helm', 'Jenkins', 'AWS', 'GitHub Actions'].map(tag => (
-                <span key={tag} className="text-[10px] font-bold px-3 py-1 rounded-full bg-gray-200 text-gray-600 tracking-wide uppercase">{tag}</span>
-              ))}
+          <div data-aos="fade-up" data-aos-delay="200" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 hover:shadow-[0_20px_50px_rgba(235,94,85,0.15)] transition-all duration-500 group border border-gray-200 flex flex-col justify-between">
+            <div>
+              <span className="text-xs font-bold tracking-[0.2em] text-[#eb5e55] uppercase mb-4 block">02</span>
+              <h3 className="text-xl font-black text-gray-900 mb-3 tracking-tight">Disease Outbreak Prediction</h3>
+              <p className="text-sm text-gray-600 font-medium leading-relaxed mb-4">
+                Epidemiological machine learning classification model forecasting contagious outbreak vectors, clinical severity, and regional hotspots to support preventive healthcare planning.
+              </p>
             </div>
-            <a href="https://github.com/adi-Git-Hub/" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#ff2a2a] hover:underline underline-offset-4">GitHub →</a>
+            <div>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {['Machine Learning', 'Python', 'Scikit-Learn', 'Classification', 'Predictive Modeling'].map(tag => (
+                  <span key={tag} className="text-[10px] font-bold px-3 py-1 rounded-full bg-gray-200 text-gray-700 tracking-wide uppercase">{tag}</span>
+                ))}
+              </div>
+              <a href="https://github.com/HrutujaDhoble" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#eb5e55] hover:underline underline-offset-4 flex items-center gap-1">
+                GitHub Repository →
+              </a>
+            </div>
           </div>
 
           {/* Project 3 */}
-          <div data-aos="fade-up" data-aos-delay="300" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-500 group border border-gray-200">
-            <span className="text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 block">03</span>
-            <h3 className="text-xl font-black text-gray-900 mb-3 tracking-tight">3D Shopping Experience</h3>
-            <p className="text-sm text-gray-500 font-medium leading-relaxed mb-4">Immersive 3D e-commerce experience with interactive product visualization, smooth animations, and real-time user interactions. Optimized rendering and asset loading performance.</p>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {['React.js', 'Three.js', 'React Three Fiber', 'GSAP'].map(tag => (
-                <span key={tag} className="text-[10px] font-bold px-3 py-1 rounded-full bg-gray-200 text-gray-600 tracking-wide uppercase">{tag}</span>
-              ))}
+          <div data-aos="fade-up" data-aos-delay="300" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 hover:shadow-[0_20px_50px_rgba(235,94,85,0.15)] transition-all duration-500 group border border-gray-200 flex flex-col justify-between">
+            <div>
+              <span className="text-xs font-bold tracking-[0.2em] text-[#eb5e55] uppercase mb-4 block">03</span>
+              <h3 className="text-xl font-black text-gray-900 mb-3 tracking-tight">SoulEase Mental Health Care App</h3>
+              <p className="text-sm text-gray-600 font-medium leading-relaxed mb-4">
+                Empathetic digital wellbeing platform leveraging natural language sentiment analysis and psychological mood tracking to provide personalized mental wellness suggestions.
+              </p>
             </div>
-            <a href="https://github.com/adi-Git-Hub/" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#ff2a2a] hover:underline underline-offset-4">GitHub →</a>
+            <div>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {['Sentiment Analysis', 'NLP', 'Python', 'React', 'Data Analytics', 'Healthcare AI'].map(tag => (
+                  <span key={tag} className="text-[10px] font-bold px-3 py-1 rounded-full bg-gray-200 text-gray-700 tracking-wide uppercase">{tag}</span>
+                ))}
+              </div>
+              <a href="https://github.com/HrutujaDhoble" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#eb5e55] hover:underline underline-offset-4 flex items-center gap-1">
+                GitHub Repository →
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -285,37 +312,37 @@ const Services = () => {
       <div className="max-w-6xl mx-auto mt-24 md:mt-32">
         <div data-aos="fade-up" className="mb-12">
           <div className="inline-block border border-gray-300 rounded-full px-5 py-1.5 text-sm text-gray-600 font-bold mb-8 shadow-sm bg-white">
-            Skills
+            Technical Stack
           </div>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-4">Technical Stack</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-4">Skills &amp; Technologies</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Backend Engineering */}
+          {/* Data Analytics & Visualization */}
           <div data-aos="fade-up" data-aos-delay="100" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 border border-gray-200">
-            <h3 className="text-lg font-black text-gray-900 mb-6 tracking-tight">Backend Engineering</h3>
+            <h3 className="text-lg font-black text-gray-900 mb-6 tracking-tight">Data Analytics &amp; Visualization</h3>
             <div className="flex flex-wrap gap-2">
-              {['Node.js', 'Express.js', 'React.js', 'Next.js', 'MongoDB', 'REST APIs', 'JWT Auth', 'Firebase', 'Three.js', 'GSAP', 'Git'].map(skill => (
+              {['Python', 'Pandas', 'NumPy', 'SQL', 'Tableau', 'Power BI', 'Matplotlib', 'Seaborn', 'Excel', 'EDA', 'Statistical Analysis', 'Data Wrangling'].map(skill => (
                 <span key={skill} className="text-[11px] font-bold px-4 py-2 rounded-full bg-white text-gray-700 border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-300 cursor-default">{skill}</span>
               ))}
             </div>
           </div>
 
-          {/* Production Infrastructure */}
+          {/* Machine Learning & AI */}
           <div data-aos="fade-up" data-aos-delay="200" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 border border-gray-200">
-            <h3 className="text-lg font-black text-gray-900 mb-6 tracking-tight">Production Infrastructure</h3>
+            <h3 className="text-lg font-black text-gray-900 mb-6 tracking-tight">Machine Learning &amp; AI</h3>
             <div className="flex flex-wrap gap-2">
-              {['AWS (EC2, IAM, VPC, S3, ECR, EKS)', 'Linux', 'Docker', 'Kubernetes', 'Helm', 'Terraform', 'Nginx', 'SSL/TLS', 'Reverse Proxy', 'DNS'].map(skill => (
+              {['Scikit-Learn', 'Supervised Learning', 'Classification', 'Regression', 'Clustering', 'Predictive Modeling', 'NLP', 'Sentiment Analysis', 'Feature Engineering', 'Model Evaluation'].map(skill => (
                 <span key={skill} className="text-[11px] font-bold px-4 py-2 rounded-full bg-white text-gray-700 border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-300 cursor-default">{skill}</span>
               ))}
             </div>
           </div>
 
-          {/* DevOps Engineering */}
+          {/* Tools & Development */}
           <div data-aos="fade-up" data-aos-delay="300" className="bg-[#f4f4f4] rounded-[1.5rem] p-8 border border-gray-200">
-            <h3 className="text-lg font-black text-gray-900 mb-6 tracking-tight">DevOps Engineering</h3>
+            <h3 className="text-lg font-black text-gray-900 mb-6 tracking-tight">Tools &amp; Workflow</h3>
             <div className="flex flex-wrap gap-2">
-              {['CI/CD', 'GitHub Actions', 'Jenkins', 'Terraform', 'Containerization', 'Container Orchestration', 'Multi-Tier Architecture', 'Microservices', 'Production Deployment', 'Infrastructure Optimization', 'Cloud Cost Optimization', 'SonarQube'].map(skill => (
+              {['Git', 'GitHub', 'Jupyter Notebooks', 'Google Colab', 'VS Code', 'REST APIs', 'Data Pipelines', 'Data Preprocessing', 'Hypothesis Testing', 'Data Storytelling'].map(skill => (
                 <span key={skill} className="text-[11px] font-bold px-4 py-2 rounded-full bg-white text-gray-700 border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-300 cursor-default">{skill}</span>
               ))}
             </div>
@@ -329,25 +356,24 @@ const Services = () => {
           {/* Certifications */}
           <div data-aos="fade-up" data-aos-delay="100">
             <div className="inline-block border border-gray-300 rounded-full px-5 py-1.5 text-sm text-gray-600 font-bold mb-8 shadow-sm bg-white">
-              Certifications
+              Certifications &amp; Learning
             </div>
             <div className="flex flex-col gap-4">
               {[
-                { name: 'AWS Cloud Practitioner Essentials', url: 'https://adi-git-hub.github.io/aditya-certificate/certificates/pages/aws-cloud-practitioner-essentials.html' },
-                { name: 'AWS Certified DevOps Engineer – Professional (Exam Prep)', url: 'https://adi-git-hub.github.io/aditya-certificate/certificates/pages/aws-certified-devops-engineer-exam-prep.html' },
-                { name: 'AWS Certified DevOps Engineer – Professional (Domain 1)', url: 'https://adi-git-hub.github.io/aditya-certificate/certificates/pages/aws-certified-devops-engineer-domain-1-review.html' },
-                { name: 'AWS Certified DevOps Engineer – Professional (Domain 2)', url: 'https://adi-git-hub.github.io/aditya-certificate/certificates/pages/aws-certified-devops-engineer-domain-2-review.html' },
-                { name: 'AWS Certified DevOps Engineer – Professional (Domain 3)', url: 'https://adi-git-hub.github.io/aditya-certificate/certificates/pages/aws-certified-devops-engineer-domain-3-review.html' },
+                { name: 'Data Analytics & Visualization Specialization', issuer: 'Verified Credential' },
+                { name: 'Machine Learning & Predictive Modeling with Python', issuer: 'Verified Credential' },
+                { name: 'Data Analysis with Pandas, NumPy & SQL', issuer: 'Verified Credential' },
+                { name: 'Tableau & Power BI for Business Intelligence', issuer: 'Verified Credential' },
               ].map((cert, i) => (
                 <a 
                   key={i}
-                  href={cert.url}
+                  href="https://linkedin.com/in/hrutuja-dhoble-4bb192258"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#f4f4f4] rounded-xl px-6 py-4 flex items-center justify-between border border-gray-200 hover:shadow-md hover:border-gray-300 transition-all duration-300 group"
+                  className="bg-[#f4f4f4] rounded-xl px-6 py-4 flex items-center justify-between border border-gray-200 hover:shadow-md hover:border-[#eb5e55]/40 transition-all duration-300 group"
                 >
                   <span className="text-sm font-bold text-gray-800">{cert.name}</span>
-                  <span className="text-xs font-bold text-[#ff2a2a] group-hover:underline underline-offset-4 whitespace-nowrap ml-4">View Credential →</span>
+                  <span className="text-xs font-bold text-[#eb5e55] group-hover:underline underline-offset-4 whitespace-nowrap ml-4">LinkedIn Profile →</span>
                 </a>
               ))}
             </div>
@@ -360,8 +386,8 @@ const Services = () => {
             </div>
             <div className="bg-[#f4f4f4] rounded-[1.5rem] p-8 border border-gray-200">
               <h3 className="text-xl font-black text-gray-900 mb-2 tracking-tight">Bachelor of Technology</h3>
-              <p className="text-base font-bold text-gray-600 mb-2">Artificial Intelligence</p>
-              <p className="text-sm text-gray-500 font-medium">G. H. Raisoni College of Engineering and Management</p>
+              <p className="text-base font-bold text-[#eb5e55] mb-2">Data Science &amp; Engineering Focus</p>
+              <p className="text-sm text-gray-600 font-medium">Undergraduate Academic Curriculum</p>
               <p className="text-sm text-gray-400 font-bold mt-3">2022 – 2026</p>
             </div>
           </div>
