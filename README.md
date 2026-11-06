@@ -1,6 +1,6 @@
-# 🚀 Hrutuja Dhoble — Premium Data Analyst Portfolio & Scroll Animation
+# 🚀 Bhavana N Masare — Personal Portfolio & Interactive 3D Experience
 
-An interactive, creative portfolio designed for **Hrutuja Dhoble** (Data Analyst & Machine Learning Enthusiast), featuring custom GSAP ScrollTrigger zooming animations, 3D interactive physics lanyard ID card, tech stack visualizers, Nodemailer contact integration, and instant resume download.
+An interactive, creative portfolio designed for **Bhavana N Masare** (Information Technology Graduate, M.Tech Student & Software Development Enthusiast), featuring custom GSAP ScrollTrigger zooming animations, 3D interactive physics lanyard ID card, tech stack visualizers, and Nodemailer contact integration.
 
 🔗 **Live Demo (GitHub Pages):** [https://adi-Git-Hub.github.io/portfolio-scrolling-animation/](https://adi-Git-Hub.github.io/portfolio-scrolling-animation/)
 
@@ -12,22 +12,30 @@ An interactive, creative portfolio designed for **Hrutuja Dhoble** (Data Analyst
 - **Hero Section**:
   - Two-column desktop and responsive stacked mobile layout.
   - Verified circular portrait with decorative accents.
-  - Quick action buttons: **Explore My Projects →** and **Download Resume** (downloads `Hrutuja_Dhoble_Resume.pdf`).
-  - Social profiles: LinkedIn, GitHub, and Email.
+  - Action buttons: **Explore My Projects →**, **Download Resume**, and **Get In Touch**.
+  - Direct contact links: Email, Phone, LinkedIn, and GitHub.
+- **Resume Download**:
+  - Direct download access to verified resume (`Bhavana_N_Masare_Resume.pdf`) available in Hero, About, and Footer sections.
 - **Interactive 3D Lanyard & ID Card**:
   - React Three Fiber + Rapier physics engine.
-  - Realistic cloth and physics simulation allowing users to drag and swing the card.
-  - Front and back portrait textures of Hrutuja.
+  - Realistic cloth and physics simulation allowing users to drag and swing the badge.
+  - Portrait texture mapping on the 3D ID badge.
 - **Tech Stack & Tools**:
-  - High-resolution, transparent official logos for Python, Pandas, NumPy, Scikit-Learn, SQL, Tableau, Power BI, and Machine Learning.
+  - Official icons for Python, React.js, SQL, MongoDB, Power BI, Tableau, Node.js, and AI Fundamentals.
   - Dual view modes: **Interactive Frosted Grid** (default) and **3D Orbit System**.
+- **Featured Projects**:
+  - **SolivaGuard**: Collaborative E-Commerce Platform & Admin Dashboard (React.js, Node.js, MongoDB, Razorpay).
+  - **EDVIKO**: AI-Powered Educational Platform (React.js, Node.js, Express, MongoDB, AI Services).
+  - **Personal Portfolio Website**: Interactive 3D physics badge & GSAP timeline scroll portfolio.
+- **Education & Certifications**:
+  - M.Tech (Pursuing), Raisoni SkillTech University, Nagpur (2026–2028).
+  - B.Tech in Information Technology, Sinhgad College of Engineering, Pune (CGPA: 6.72/10).
+  - Great Learning Python Certificate (2026).
+  - Great Learning MySQL for Data Analytics Certificate (2026).
 - **Contact Form with Nodemailer**:
-  - Direct email submission to `hrutujadhoble483@gmail.com`.
+  - Direct email submission to `bhavanamasare73@gmail.com`.
   - Development test mode using Ethereal Email with browser previews.
-  - Bulletproof mailto client fallback.
-- **Automated GitHub Pages Deployment**:
-  - Pre-configured GitHub Actions workflow (`.github/workflows/deploy.yml`) on every push to `main`.
-  - Pre-built `gh-pages` branch for instant deployment.
+  - Mailto client fallback.
 
 ---
 
@@ -35,7 +43,7 @@ An interactive, creative portfolio designed for **Hrutuja Dhoble** (Data Analyst
 
 - **Framework**: React 19, Vite
 - **Styling**: Tailwind CSS v4
-- **Animation & Physics**: GSAP 3, ScrollTrigger, Lenis Smooth Scroll, Three.js, React Three Fiber, React Three Rapier
+- **Animation & Physics**: GSAP 3, ScrollTrigger, Lenis Smooth Scroll, Three.js, React Three Fiber, React Three Rapier, Framer Motion
 - **Backend**: Node.js, Express, Nodemailer
 
 ---
@@ -66,12 +74,6 @@ npm run build
 
 ---
 
-## 📄 Resume Download
-
-The official resume PDF is located in `public/Hrutuja_Dhoble_Resume.pdf` and is downloaded directly when users click the **Download Resume** button in the hero section.
-
----
-
 ## ✉️ Nodemailer Configuration
 
 Copy `.env.example` to `.env` and add your 16-character Google App Password:
@@ -80,9 +82,9 @@ EMAIL_SERVICE=gmail
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=465
 EMAIL_SECURE=true
-EMAIL_USER=hrutujadhoble483@gmail.com
+EMAIL_USER=bhavanamasare73@gmail.com
 EMAIL_PASS=your_16_character_app_password
-EMAIL_TO=hrutujadhoble483@gmail.com
+EMAIL_TO=bhavanamasare73@gmail.com
 PORT=5001
 ```
 
@@ -93,20 +95,9 @@ npm run server
 
 ---
 
-## 🌐 Deploy to GitHub Pages
-
-This repo includes `.github/workflows/deploy.yml`:
-1. In repository settings on GitHub, navigate to **Pages**.
-2. Under **Build and deployment > Source**, select:
-   - **GitHub Actions** (recommended) OR
-   - **Deploy from a branch** &rarr; select branch `gh-pages` & folder `/ (root)`.
-3. Your site will be live at `https://<username>.github.io/portfolio-scrolling-animation/`!
-
----
-
 ## 👤 Author
 
-**Hrutuja Dhoble**
-- LinkedIn: [Hrutuja Dhoble](https://linkedin.com/in/hrutuja-dhoble-4bb192258)
-- GitHub: [@HrutujaDhoble](https://github.com/HrutujaDhoble)
-- Email: hrutujadhoble483@gmail.com
+**Bhavana N Masare**
+- Location: Maharashtra, India
+- Phone: +91 9767537552
+- Email: bhavanamasare73@gmail.com

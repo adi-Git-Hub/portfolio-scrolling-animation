@@ -1,31 +1,32 @@
 import React, { useRef, useState, useEffect, useMemo } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import hrutujaIcard from '../assets/about/hrutuja_icard.png';
+const bhavanaIcard = encodeURI(`${import.meta.env.BASE_URL}WhatsApp Image 2026-11-06 at 17.42.29.jpeg`);
+const bhavanaResume = encodeURI(`${import.meta.env.BASE_URL}resume_ (2).pdf`);
 import Lanyard from './Lanyard/Lanyard';
 import OrbitImages from './OrbitImages/OrbitImages';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// 3D orbit icons for Data Analysis & ML Stack
+// 3D orbit & tech stack icons for Bhavana's verified skills
 import pythonIcon from '../assets/orbit-icons/python.png';
-import pandasIcon from '../assets/orbit-icons/pandas.png';
-import scikitIcon from '../assets/orbit-icons/scikit.png';
+import reactIcon from '../assets/about/react.png';
 import sqlIcon from '../assets/orbit-icons/sql.png';
-import tableauIcon from '../assets/orbit-icons/tableau.png';
+import mongodbIcon from '../assets/about/mongodb.png';
 import powerbiIcon from '../assets/orbit-icons/powerbi.png';
-import numpyIcon from '../assets/orbit-icons/numpy.png';
+import tableauIcon from '../assets/orbit-icons/tableau.png';
+import nodeIcon from '../assets/about/node.png';
 import mlIcon from '../assets/orbit-icons/ml.png';
 
 const techStack = [
-  { name: 'Python', category: 'Core Language', icon: pythonIcon },
-  { name: 'Pandas', category: 'Data Analysis', icon: pandasIcon },
-  { name: 'NumPy', category: 'Numerical Computing', icon: numpyIcon },
-  { name: 'Scikit-Learn', category: 'Machine Learning', icon: scikitIcon },
-  { name: 'SQL', category: 'Database & Query', icon: sqlIcon },
+  { name: 'Python', category: 'Programming Language', icon: pythonIcon },
+  { name: 'React.js', category: 'Frontend Development', icon: reactIcon },
+  { name: 'SQL / MySQL', category: 'Relational Database', icon: sqlIcon },
+  { name: 'MongoDB', category: 'NoSQL Database', icon: mongodbIcon },
+  { name: 'Power BI', category: 'Data & Visualization', icon: powerbiIcon },
   { name: 'Tableau', category: 'Visual Analytics', icon: tableauIcon },
-  { name: 'Power BI', category: 'BI Dashboards', icon: powerbiIcon },
-  { name: 'Machine Learning', category: 'Predictive AI', icon: mlIcon },
+  { name: 'Node.js', category: 'Backend & APIs', icon: nodeIcon },
+  { name: 'AI / ML', category: 'AI Fundamentals', icon: mlIcon },
 ];
 
 /* Keyword highlight — only important tech terms */
@@ -113,8 +114,8 @@ const About = () => {
                 position={[0, 0, 15]}
                 gravity={[0, -40, 0]}
                 transparent={true}
-                frontImage={hrutujaIcard}
-                backImage={hrutujaIcard}
+                frontImage={bhavanaIcard}
+                backImage={bhavanaIcard}
                 lanyardWidth={1.5}
                 shouldFall={shouldFall}
               />
@@ -151,12 +152,34 @@ const About = () => {
               data-aos-delay="200"
               className="text-base md:text-[16.5px] text-red-50/90 leading-[1.85] md:leading-[1.95] max-w-[620px]"
             >
-              Hi, I'm{' '}
+              Hello! I'm{' '}
               <span className="text-white font-black text-lg tracking-wide">
-                HRUTUJA DHOBLE
+                BHAVANA N MASARE
               </span>
-              , a <K>Data Analyst</K> and <K>Machine Learning</K> enthusiast focused on turning raw data into meaningful insights through analytics, visualization, and intelligent modeling. I specialize in exploratory data analysis, statistical evaluation, and developing predictive machine learning systems with <K>Python</K>, <K>Pandas</K>, <K>NumPy</K>, and <K>Scikit-Learn</K>. My work encompasses business analytics, health outcome predictions, and designing interactive dashboards in <K>Tableau</K> and <K>Power BI</K> to make data intuitive and impactful for decision-makers.
+              , an Information Technology graduate currently pursuing my M.Tech at <K>Raisoni SkillTech University, Nagpur</K>.
+              <br /><br />
+              I have foundational knowledge of <K>Python</K>, <K>C</K>, <K>C++</K>, <K>Java</K>, <K>SQL</K>, databases, and web technologies.
+              <br /><br />
+              I am interested in <K>software development</K>, <K>data-driven applications</K>, and <K>AI-based solutions</K>. Through collaborative projects, I have gained exposure to application development, project implementation, and technical problem-solving.
+              <br /><br />
+              I continuously work on improving my technical knowledge and building practical solutions.
             </p>
+
+            {/* Resume Download Action Button */}
+            <div data-aos="fade-up" data-aos-delay="250" className="pt-1">
+              <a
+                href={bhavanaResume}
+                download="Bhavana_N_Masare_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white/[0.12] hover:bg-white text-white hover:text-gray-900 border border-white/25 hover:border-white text-xs sm:text-sm font-bold tracking-wide transition-[background-color,color,transform,box-shadow] duration-200 ease-out hover:scale-105 active:scale-95 shadow-md hover:shadow-xl backdrop-blur-md cursor-pointer"
+              >
+                <svg className="w-4 h-4 fill-none stroke-current" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v13m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" />
+                </svg>
+                <span>Download Resume (PDF)</span>
+              </a>
+            </div>
 
             {/* ── Technology Stack Showcase ── */}
             <div
@@ -251,9 +274,14 @@ const About = () => {
         </div>
       </div>
 
-      {/* ── Torn paper divider ── */}
-      <div className="absolute bottom-0 left-0 w-full pointer-events-none z-30 translate-y-[1px]">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-14 md:h-24 fill-white">
+      {/* ── Torn paper divider — Seamless subpixel edge to Services section ── */}
+      <div className="absolute -bottom-px left-0 w-full pointer-events-none z-30 overflow-hidden leading-none">
+        <svg 
+          viewBox="0 0 1200 120" 
+          preserveAspectRatio="none" 
+          className="w-full h-14 md:h-24 fill-white block"
+          shapeRendering="geometricPrecision"
+        >
           <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.62,189.5,99.8,242.79,81.82,282.88,63.6,321.39,56.44Z" />
         </svg>
       </div>

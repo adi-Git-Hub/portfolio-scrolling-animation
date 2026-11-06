@@ -45,7 +45,7 @@ const Navbar = () => {
             onClick={(e) => handleNavClick(e, '#home')}
             className="text-white text-2xl font-black tracking-tight flex items-center cursor-pointer"
           >
-            Hrutuja<span className="text-[#f0c59b]">.</span>
+            Bhavana<span className="text-[#f0c59b]">.</span>
           </a>
         </div>
 

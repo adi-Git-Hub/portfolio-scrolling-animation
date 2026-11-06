@@ -152,7 +152,7 @@ ${message}
             <!-- Footer -->
             <tr>
               <td style="border-top: 1px solid #27272a; padding: 20px 30px; text-align: center; font-size: 12px; color: #71717a;">
-                This message was sent from Hrutuja Dhoble's Portfolio website via Nodemailer.
+                This message was sent from Bhavana N Masare's Portfolio website via Nodemailer.
               </td>
             </tr>
           </table>
@@ -178,7 +178,7 @@ export async function sendContactEmail({ name, email, message }) {
   }
 
   const { transporter, mode, senderEmail } = await getTransporter();
-  const recipientEmail = process.env.EMAIL_TO || 'hrutujadhoble483@gmail.com';
+  const recipientEmail = process.env.EMAIL_TO || 'bhavanamasare73@gmail.com';
   const timestamp = new Date().toLocaleString('en-US', {
     dateStyle: 'full',
     timeStyle: 'short',

@@ -27,7 +27,7 @@ app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
     mode: isLive ? 'live (Gmail/SMTP)' : 'test (Ethereal Email)',
-    recipient: process.env.EMAIL_TO || 'hrutujadhoble483@gmail.com',
+    recipient: process.env.EMAIL_TO || 'bhavanamasare73@gmail.com',
   });
 });
 
@@ -69,5 +69,5 @@ app.use(express.static(distPath));
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Nodemailer Email Server running on http://localhost:${PORT}`);
-  console.log(`📧 Destination: ${process.env.EMAIL_TO || 'hrutujadhoble483@gmail.com'}`);
+  console.log(`📧 Destination: ${process.env.EMAIL_TO || 'bhavanamasare73@gmail.com'}`);
 });

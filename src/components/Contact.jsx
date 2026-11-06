@@ -84,7 +84,7 @@ const Contact = () => {
   };
 
   return (
-    <section ref={ref} id="contact" className="bg-[#121214] w-full min-h-screen relative overflow-hidden flex items-end pt-32 pb-0 md:pb-0 border-t border-gray-800">
+    <section ref={ref} id="contact" className="bg-[#121214] w-full min-h-screen relative overflow-hidden flex items-end pt-24 sm:pt-32 pb-16 md:pb-24 px-4 sm:px-6 md:px-12">
       {/* Huge Background Text — Composited on GPU layer for zero raster lag */}
       <motion.div 
         style={{ y }}
@@ -102,22 +102,49 @@ const Contact = () => {
       <div className="relative z-10 w-full flex justify-end items-end">
         <div 
           data-aos="fade-up"
-          className="bg-[#eb5e55] w-full md:w-[85%] lg:w-[75%] p-8 md:p-16 text-white flex flex-col justify-between shadow-2xl hardware-accelerated"
+          className="bg-[#eb5e55] w-full md:w-[88%] lg:w-[80%] rounded-3xl md:rounded-[2.5rem] p-8 md:p-16 text-white flex flex-col justify-between shadow-[0_25px_60px_rgba(0,0,0,0.45)] border border-white/10 hardware-accelerated"
         >
-          <div className="text-xs font-bold tracking-[0.2em] mb-8 md:mb-14 uppercase opacity-95 text-[#fce7d2]">
-            Let's Connect &bull; Open to Analytics &amp; ML Opportunities
+          <div className="text-xs font-bold tracking-[0.2em] mb-4 uppercase opacity-95 text-[#fce7d2]">
+            Let's Connect! &bull; Open to Opportunities
+          </div>
+          <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">
+            Let's Connect!
+          </h2>
+          <p className="text-white/90 text-sm md:text-base font-medium max-w-xl mb-8 leading-relaxed">
+            Have an opportunity, project idea, or collaboration in mind? I'd love to connect and discuss it.
+          </p>
+
+          {/* Contact Info Details & Links */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 text-xs sm:text-sm font-semibold">
+            <div className="bg-black/15 rounded-xl p-3.5 border border-white/15 flex flex-col gap-1">
+              <span className="text-[10px] uppercase tracking-wider text-[#fce7d2] font-bold">Name</span>
+              <span className="text-white font-bold">Bhavana N Masare</span>
+            </div>
+            <a href="mailto:bhavanamasare73@gmail.com" className="bg-black/15 hover:bg-black/25 rounded-xl p-3.5 border border-white/15 flex flex-col gap-1 transition-colors">
+              <span className="text-[10px] uppercase tracking-wider text-[#fce7d2] font-bold">Email Me</span>
+              <span className="text-white font-bold truncate">bhavanamasare73@gmail.com</span>
+            </a>
+            <a href="tel:+919767537552" className="bg-black/15 hover:bg-black/25 rounded-xl p-3.5 border border-white/15 flex flex-col gap-1 transition-colors">
+              <span className="text-[10px] uppercase tracking-wider text-[#fce7d2] font-bold">Phone</span>
+              <span className="text-white font-bold">+91 9767537552</span>
+            </a>
+            <div className="bg-black/15 rounded-xl p-3.5 border border-white/15 flex flex-col gap-1">
+              <span className="text-[10px] uppercase tracking-wider text-[#fce7d2] font-bold">Location</span>
+              <span className="text-white font-bold">Maharashtra, India</span>
+            </div>
           </div>
 
-          {/* Contact Info Links */}
-          <div className="flex flex-wrap gap-6 mb-12 text-sm font-semibold">
-            <a href="mailto:hrutujadhoble483@gmail.com" className="text-white/95 hover:text-white underline underline-offset-4 decoration-1 transition-colors flex items-center gap-1.5">
-              <span>✉</span> hrutujadhoble483@gmail.com
+          {/* Social Links */}
+          <div className="flex flex-wrap items-center gap-5 mb-10 text-xs font-bold uppercase tracking-wider text-white/80">
+            <span className="text-[#fce7d2]">Profiles:</span>
+            <a href="mailto:bhavanamasare73@gmail.com" className="hover:text-white underline underline-offset-4 decoration-1 transition-colors flex items-center gap-1.5">
+              <span>✉</span> Email Me
             </a>
-            <a href="https://github.com/HrutujaDhoble" target="_blank" rel="noopener noreferrer" className="text-white/95 hover:text-white underline underline-offset-4 decoration-1 transition-colors flex items-center gap-1.5">
-              <span>↗</span> GitHub
-            </a>
-            <a href="https://linkedin.com/in/hrutuja-dhoble-4bb192258" target="_blank" rel="noopener noreferrer" className="text-white/95 hover:text-white underline underline-offset-4 decoration-1 transition-colors flex items-center gap-1.5">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white underline underline-offset-4 decoration-1 transition-colors flex items-center gap-1.5">
               <span>↗</span> LinkedIn
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-white underline underline-offset-4 decoration-1 transition-colors flex items-center gap-1.5">
+              <span>↗</span> GitHub
             </a>
           </div>
 
@@ -132,7 +159,7 @@ const Contact = () => {
                   <p className="font-bold text-lg">Message Sent Successfully via Nodemailer!</p>
                   <p className="text-sm text-white/90 mt-0.5">
                     {sentMode === 'live' 
-                      ? "Delivered directly to Hrutuja's Gmail inbox (hrutujadhoble483@gmail.com). I'll reply promptly!" 
+                      ? "Delivered directly to Bhavana's Gmail inbox (bhavanamasare73@gmail.com). I'll reply promptly!" 
                       : "Handled by Nodemailer test environment. Your message was processed and queued."}
                   </p>
                 </div>
@@ -169,7 +196,7 @@ const Contact = () => {
                 <p className="text-sm font-medium text-white">{errorMsg}</p>
               </div>
               <a 
-                href={`mailto:hrutujadhoble483@gmail.com?subject=Contact%20from%20Portfolio&body=${encodeURIComponent(formData.message || 'Hi Hrutuja,')}`}
+                href={`mailto:bhavanamasare73@gmail.com?subject=Contact%20from%20Portfolio&body=${encodeURIComponent(formData.message || 'Hi Bhavana,')}`}
                 className="text-xs font-bold underline underline-offset-2 hover:text-[#fce7d2] whitespace-nowrap"
               >
                 Open in Email App &rarr;
@@ -254,7 +281,7 @@ const Contact = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-6">
                   <p className="max-w-[250px] leading-relaxed text-white/60">
-                    Open to full-time roles, internships, and data science collaborations.
+                    Open to software development roles, M.Tech collaborative projects, and engineering opportunities.
                   </p>
                   
                   <button 

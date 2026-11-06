@@ -8,6 +8,8 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   assetsInclude: ['**/*.glb'],
   server: {
+    port: 5180,
+    host: '0.0.0.0',
     proxy: {
       '/api': {
         target: 'http://localhost:5001',
